@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="The controller needs a way to find out that the intersection&#10;is empty. It could have loads of fancy hardware to sense the&#10;cars but instead, we will use a timer. We assume that cars&#10;move at least at a certain speed (for example half of the &#10;speed limit). Since we know that only three cars fit in the&#10;intersection, we can wait long enough for three cars to &#10;leave the intersection after turning a light red and before&#10;turning the other light green.&#10;&#10;In terms of Event-B, the purpose is to make ctr_* events not&#10;use the EW and NS variables directly. Instead, the *_green&#10;events will rely on the value of the timer which has to be&#10;related to the number of cars. Hint: EW &lt;= tmr might be a &#10;good start but it won't work just as is." org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="m2"/>
+<org.eventb.core.seesContext name="1" org.eventb.core.target="ctx0"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="EW"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="NS"/>
+<org.eventb.core.variable name="/" org.eventb.core.comment="color of the light signal for the cars coming from the east" org.eventb.core.identifier="c_EW_SGN"/>
+<org.eventb.core.variable name="0" org.eventb.core.comment="... for the cars coming from the north" org.eventb.core.identifier="c_NS_SGN"/>
+<org.eventb.core.event name="2" org.eventb.core.comment="Initially, the intersection is empty" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="tmr ≔ 0" org.eventb.core.label="act5"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="3" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ENTER_NORTH">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ENTER_NORTH"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="4" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EXIT_SOUTH">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EXIT_SOUTH"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="tmr ≔ tmr − 1" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="5" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ENTER_EAST">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ENTER_EAST"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="6" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EXIT_WEST">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EXIT_WEST"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="tmr ≔ tmr − 1" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="7" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ctr_ns_green">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ctr_ns_green"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="8" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ctr_ns_red">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ctr_ns_red"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="tmr ≔ 3" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="9" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ctr_ew_green">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ctr_ew_green"/>
+</org.eventb.core.event>
+<org.eventb.core.event name=":" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ctr_ew_red">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ctr_ew_red"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="tmr ≔ 3" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name=";" org.eventb.core.comment="timer: it is integer valued and will count down from 3 and &#10;may count passed 0." org.eventb.core.identifier="tmr"/>
+<org.eventb.core.invariant name="=" org.eventb.core.label="inv1" org.eventb.core.predicate="tmr ∈ ℤ "/>
+<org.eventb.core.invariant name="&gt;" org.eventb.core.comment="Consistency between timer and number of cars" org.eventb.core.label="inv2" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.event name="@" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="count_down">
+<org.eventb.core.action name="'" org.eventb.core.assignment="tmr ≔ tmr − 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="A" org.eventb.core.label="inv3" org.eventb.core.predicate="⊤"/>
+</org.eventb.core.machineFile>

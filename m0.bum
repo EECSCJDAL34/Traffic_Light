@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="Describes a road intersections&#10;Conventions: &#10;  o variables modelling the environment have names all &#10;    in CAPITAL&#10;  o variables describing the state of the controller are &#10;    all LOWER CASES" org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.event name="'" org.eventb.core.comment="Initially, the intersection &#10;is empty" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="EW ≔ 0" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="NS ≔ 0" org.eventb.core.label="act2"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="(" org.eventb.core.comment="Number of cars crossing the intersection in the &#10;  east-west direction" org.eventb.core.identifier="EW"/>
+<org.eventb.core.variable name=")" org.eventb.core.comment="Number of cars crossing in the north-south direction" org.eventb.core.identifier="NS"/>
+<org.eventb.core.invariant name="*" org.eventb.core.label="inv1" org.eventb.core.predicate="EW ∈ ℕ"/>
+<org.eventb.core.invariant name="+" org.eventb.core.label="inv2" org.eventb.core.predicate="NS ∈ ℕ"/>
+<org.eventb.core.event name="," org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ENTER_NORTH">
+<org.eventb.core.action name="'" org.eventb.core.assignment="NS ≔ NS + 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="-" org.eventb.core.comment="YOUR INVARIANT HERE: &#10;we want to prevent cars from colliding &#10;in the intersection" org.eventb.core.label="inv3" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.event name="." org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EXIT_SOUTH">
+<org.eventb.core.action name="'" org.eventb.core.assignment="NS ≔ NS − 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="/" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ENTER_EAST">
+<org.eventb.core.action name="'" org.eventb.core.assignment="EW ≔ EW + 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="0" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EXIT_WEST">
+<org.eventb.core.action name="'" org.eventb.core.assignment="EW ≔ EW − 1" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

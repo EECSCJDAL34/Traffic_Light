@@ -1,0 +1,71 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[top=3cm, bottom=2.5cm, left=3cm, right=2.5cm] {geometry}
+\usepackage {bsymb,b2latex}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,lastpage,color}
+\lhead{\rm An Event-B Specification of m0}
+\rhead {\rm Page \thepage~of \pageref{LastPage}}
+\lfoot{}\cfoot{}\rfoot{}
+\pagestyle{fancy}
+%---------------------------------------------------------
+\begin{document}
+\thispagestyle{empty}
+\begin{description}
+\BTitle{m0}{3Jan2015}{07:31:23 PM}
+\MACHINE{m0}\cmt{		\\\hspace*{1 cm}  Describes a road intersections		\\\hspace*{0.8 cm}  Conventions: 		\\\hspace*{1.2 cm}  o variables modelling the environment have names all in CAPITAL		\\\hspace*{1.2 cm}  o variables describing the state of the controller are all LOWER CASES }
+\VARIABLES
+	\begin{description}
+		\ItemY{ EW }{Number of cars crossing the intersection in the east-west direction}
+		\ItemY{ NS }{Number of cars crossing in the north-south direction}
+	\end{description}
+\INVARIANTS
+	\begin{description}
+		\nItem{ inv1 }{ EW \in  \nat }
+		\nItem{ inv2 }{ NS \in  \nat }
+		\nItemY{ inv3 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE: we want to prevent cars from colliding in the intersection }
+	\end{description}
+\EVENTS
+	\INITIALISATION\cmt{		\\\hspace*{3.4 cm}  Initially, the intersection is empty }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ EW :=  0 }
+			\nItem{ act2 }{ NS :=  0 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_NORTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ NS :=  NS + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIST\_SOUTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ NS :=  NS -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_EAST}\cmt{		\\\hspace*{2.6 cm}  Environment phenomenon.		\\\hspace*{2.4 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ EW :=  EW + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIT\_WEST}\cmt{		\\\hspace*{2.4 cm}  Environment phenomenon.		\\\hspace*{2.2 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ EW :=  EW -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+\END
+\end{description}
+\end{document}

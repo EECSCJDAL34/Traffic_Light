@@ -1,0 +1,75 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[top=3cm, bottom=2.5cm, left=3cm, right=2.5cm] {geometry}
+\usepackage {bsymb,b2latex}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,lastpage,color}
+\lhead{\rm An Event-B Specification of m1}
+\rhead {\rm Page \thepage~of \pageref{LastPage}}
+\lfoot{}\cfoot{}\rfoot{}
+\pagestyle{fancy}
+%---------------------------------------------------------
+\begin{document}
+\thispagestyle{empty}
+\begin{description}
+\BTitle{m1}{3Jan2015}{07:31:23 PM}
+\MACHINE{m1}\cmt{		\\\hspace*{1 cm}  Here we model the fact that only 3 cars can simultaneously fit in		\\\hspace*{0.8 cm}  the intersection. }
+\REFINES{m0}
+\VARIABLES
+	\begin{description}
+		\ItemY{ EW }{Number of cars crossing the intersection in the east-west direction}
+		\ItemY{ NS }{Number of cars crossing in the north-south direction}
+	\end{description}
+\INVARIANTS
+	\begin{description}
+		\nItemY{ inv1 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE }
+	\end{description}
+\EVENTS
+	\INITIALISATION
+		\\\textit{extended}\cmt{		\\\hspace*{3.4 cm}  Initially, the intersection is empty }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  0 }
+			\nItemX{ act2 }{ NS :=  0 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_NORTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {ENTER\_NORTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIST\_SOUTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {EXIST\_SOUTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_EAST}\cmt{		\\\hspace*{2.6 cm}  Environment phenomenon.		\\\hspace*{2.4 cm}  You may have to edit this }
+	\EXTD {ENTER\_EAST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIT\_WEST}\cmt{		\\\hspace*{2.4 cm}  Environment phenomenon.		\\\hspace*{2.2 cm}  You may have to edit this }
+	\EXTD {EXIT\_WEST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+\END
+\end{description}
+\end{document}

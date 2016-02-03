@@ -1,0 +1,116 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[top=3cm, bottom=2.5cm, left=3cm, right=2.5cm] {geometry}
+\usepackage {bsymb,b2latex}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,lastpage,color}
+\lhead{\rm An Event-B Specification of m2}
+\rhead {\rm Page \thepage~of \pageref{LastPage}}
+\lfoot{}\cfoot{}\rfoot{}
+\pagestyle{fancy}
+%---------------------------------------------------------
+\begin{document}
+\thispagestyle{empty}
+\begin{description}
+\BTitle{m2}{3Jan2015}{07:31:23 PM}
+\MACHINE{m2}\cmt{		\\\hspace*{1 cm}  We introduce the light signals		\\\hspace*{0.8 cm}  By convention, because the light signals are part of the environment		\\\hspace*{0.8 cm}  but controlled by the computer, we put their names in capital and 		\\\hspace*{0.8 cm}  prefix them with c$\_$ which stands for "controlled".		\\\hspace*{0.8 cm}  Realism: the events modelling the cars should not use variables that		\\\hspace*{1.2 cm}  the drivers can rely on. For instance, if two cars are about to 		\\\hspace*{1.2 cm}  enter the intersection, one from the north, the other from the east,		\\\hspace*{1.2 cm}  the drivers sometimes can't stop quickly enough to avoid being both		\\\hspace*{1.2 cm}  in the intersection simultaneously. For this reason, we disallow		\\\hspace*{1.2 cm}  events that model cars to use the number of cars coming in the other		\\\hspace*{1.2 cm}  direction.		\\\hspace*{0.8 cm}  Productivity: It would be easy to make the system safe by leaving		\\\hspace*{1.2 cm}  the light signal red forever. However, it would defeat the purpose		\\\hspace*{1.2 cm}  of having a road: letting the cars go from one place and eventually		\\\hspace*{1.2 cm}  arriving to a destination. To avoid this, we require two things:		\\\hspace*{0.8 cm}  (1) we prove that both light signals being red implies that one of 		\\\hspace*{1.6 cm}  EXIT$\_$SOUTH, EXIT$\_$EAST, ctr$\_$ns$\_$green, ctr$\_$ew$\_$green is enabled. We		\\\hspace*{1.6 cm}  make it into an invariant.		\\\hspace*{0.8 cm}  (2) For both light signals, we should prove as an invariant that, if		\\\hspace*{1.6 cm}  it is green, the event that would make it red is enabled.		\\\hspace*{0.8 cm}  See ctx0 for the definitions of the colors }
+\REFINES{m1}
+\SEES{ctx0}
+\VARIABLES
+	\begin{description}
+		\Item{ EW }
+		\Item{ NS }
+		\ItemY{ c\_EW\_SGN }{color of the light signal for the cars coming from the east}
+		\ItemY{ c\_NS\_SGN }{... for the cars coming from the north}
+	\end{description}
+\INVARIANTS
+	\begin{description}
+		\nItem{ inv1 }{ c\_EW\_SGN \in  COLOR }
+		\nItem{ inv2 }{ c\_NS\_SGN \in  COLOR }
+		\nItemY{ inv3 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE: the light signals don't remain simultaneously red forever }
+		\nItemY{ inv4 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE: the east-west signal doesn't remain green forever }
+		\nItemY{ inv5 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE: the north-south signal doesn't remain green forever }
+	\end{description}
+\EVENTS
+	\INITIALISATION
+		\\\textit{extended}\cmt{		\\\hspace*{3.4 cm}  Initially, the intersection is empty }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  0 }
+			\nItemX{ act2 }{ NS :=  0 }
+			\nItem{ act3 }{ c\_EW\_SGN :=  RED }
+			\nItem{ act4 }{ c\_NS\_SGN :=  GREEN }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_NORTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {ENTER\_NORTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIST\_SOUTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {EXIST\_SOUTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_EAST}\cmt{		\\\hspace*{2.6 cm}  Environment phenomenon.		\\\hspace*{2.4 cm}  You may have to edit this }
+	\EXTD {ENTER\_EAST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIT\_WEST}\cmt{		\\\hspace*{2.4 cm}  Environment phenomenon.		\\\hspace*{2.2 cm}  You may have to edit this }
+	\EXTD {EXIT\_WEST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ns\_green}\cmt{		\\\hspace*{2.2 cm}  Computer controlled		\\\hspace*{2 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ c\_NS\_SGN :=  GREEN }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ns\_red}\cmt{		\\\hspace*{1.8 cm}  Computer controlled		\\\hspace*{1.6 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ c\_NS\_SGN :=  RED }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ew\_green}\cmt{		\\\hspace*{2.2 cm}  Computer controlled		\\\hspace*{2 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ c\_EW\_SGN :=  GREEN }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ew\_red}\cmt{		\\\hspace*{1.8 cm}  Computer controlled		\\\hspace*{1.6 cm}  You may have to edit this }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ c\_EW\_SGN :=  RED }
+			\end{description}
+		\EndAct
+		\end{description}
+\END
+\end{description}
+\end{document}

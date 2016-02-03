@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scMachineFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd">
+<org.eventb.core.scInvariant name="'" org.eventb.core.label="inv1" org.eventb.core.predicate="EW∈ℕ" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#*" org.eventb.core.theorem="false"/>
+<org.eventb.core.scInvariant name="(" org.eventb.core.label="inv2" org.eventb.core.predicate="NS∈ℕ" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#+" org.eventb.core.theorem="false"/>
+<org.eventb.core.scInvariant name=")" org.eventb.core.label="inv3" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#-" org.eventb.core.theorem="false"/>
+<org.eventb.core.scVariable name="EW" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.variable#(" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scVariable name="NS" org.eventb.core.abstract="false" org.eventb.core.concrete="true" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.variable#)" org.eventb.core.type="ℤ"/>
+<org.eventb.core.scEvent name="NT" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#'">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="EW ≔ 0" org.eventb.core.label="act1" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#'|org.eventb.core.action#'"/>
+<org.eventb.core.scAction name="(" org.eventb.core.assignment="NS ≔ 0" org.eventb.core.label="act2" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#'|org.eventb.core.action#("/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="NU" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ENTER_NORTH" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#,">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="NS ≔ NS+1" org.eventb.core.label="act1" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#,|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="NV" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EXIT_SOUTH" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#.">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="NS ≔ NS − 1" org.eventb.core.label="act1" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#.|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="NW" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ENTER_EAST" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#\/">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="EW ≔ EW+1" org.eventb.core.label="act1" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#\/|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+<org.eventb.core.scEvent name="NX" org.eventb.core.accurate="true" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="EXIT_WEST" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#0">
+<org.eventb.core.scAction name="'" org.eventb.core.assignment="EW ≔ EW − 1" org.eventb.core.label="act1" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.event#0|org.eventb.core.action#'"/>
+</org.eventb.core.scEvent>
+</org.eventb.core.scMachineFile>

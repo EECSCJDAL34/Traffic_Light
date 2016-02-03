@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.comment="We introduce the light signals&#10;By convention, because the light signals are part of the &#10;environment but controlled by the computer, we put their &#10;names in capital and prefix them with c_ which stands for &#10;&quot;controlled&quot;.&#10;&#10;Realism: the events modelling the cars should not use variables &#10;  that the drivers can rely on. For instance, if two cars are &#10;  about to enter the intersection, one from the north, the other &#10;  from the east, the drivers sometimes can't stop quickly enough &#10;  to avoid being both in the intersection simultaneously. For &#10;  this reason, we disallow events that model cars to use the &#10;  number of cars coming in the other direction.&#10;&#10;Productivity: It would be easy to make the system safe by &#10;  leaving the light signal red forever. However, it would &#10;  defeat the purpose of having a road: letting the cars go &#10;  from one place and eventually arriving to a destination. &#10;  To avoid this, we require two things.&#10;(1) We prove that both light signals being red implies that &#10;    one of EXIT_SOUTH, EXIT_EAST, ctr_ns_green, ctr_ew_green &#10;    is enabled. We make it into an invariant.&#10;(2) For both light signals, we should prove as an invariant &#10;    that, if it is green, the event that would make it red &#10;    is enabled.&#10;&#10;See ctx0 for the definitions of the colors." org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+<org.eventb.core.refinesMachine name="'" org.eventb.core.target="m1"/>
+<org.eventb.core.variable name="(" org.eventb.core.identifier="EW"/>
+<org.eventb.core.variable name=")" org.eventb.core.identifier="NS"/>
+<org.eventb.core.event name="*" org.eventb.core.comment="Initially, the intersection is empty" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="'" org.eventb.core.assignment="c_EW_SGN ≔ RED" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="(" org.eventb.core.assignment="c_NS_SGN ≔ GREEN" org.eventb.core.label="act4"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="+" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ENTER_NORTH">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ENTER_NORTH"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="," org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EXIT_SOUTH">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EXIT_SOUTH"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="-" org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="ENTER_EAST">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="ENTER_EAST"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="." org.eventb.core.comment="Environment phenomenon.&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.label="EXIT_WEST">
+<org.eventb.core.refinesEvent name="'" org.eventb.core.target="EXIT_WEST"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="/" org.eventb.core.comment="color of the light signal for the cars coming from the east" org.eventb.core.identifier="c_EW_SGN"/>
+<org.eventb.core.variable name="0" org.eventb.core.comment="... for the cars coming from the north" org.eventb.core.identifier="c_NS_SGN"/>
+<org.eventb.core.seesContext name="1" org.eventb.core.target="ctx0"/>
+<org.eventb.core.invariant name="2" org.eventb.core.label="inv1" org.eventb.core.predicate="c_EW_SGN ∈ COLOR"/>
+<org.eventb.core.invariant name="3" org.eventb.core.label="inv2" org.eventb.core.predicate="c_NS_SGN ∈ COLOR"/>
+<org.eventb.core.event name="4" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ctr_ns_green">
+<org.eventb.core.action name="'" org.eventb.core.assignment="c_NS_SGN ≔ GREEN" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="5" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ctr_ns_red">
+<org.eventb.core.action name="'" org.eventb.core.assignment="c_NS_SGN ≔ RED" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="6" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ctr_ew_green">
+<org.eventb.core.action name="'" org.eventb.core.assignment="c_EW_SGN ≔ GREEN" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="7" org.eventb.core.comment="Computer controlled&#10;You may have to edit this" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ctr_ew_red">
+<org.eventb.core.action name="'" org.eventb.core.assignment="c_EW_SGN ≔ RED" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.invariant name="8" org.eventb.core.comment="Refinement: guard strengthening A" org.eventb.core.label="inv3" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.invariant name="9" org.eventb.core.comment="Refinement: guard strengthening B" org.eventb.core.label="inv4" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.invariant name=":" org.eventb.core.comment="Safety of the light signals" org.eventb.core.label="inv5" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.invariant name="=" org.eventb.core.comment="Productivity: the east-west signal doesn't remain green &#10;forever" org.eventb.core.label="inv6" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.invariant name="&gt;" org.eventb.core.comment="Productivity: the north-south signal doesn't remain green &#10;forever" org.eventb.core.label="inv7" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.invariant name="@" org.eventb.core.comment="Productivity: the light signals don't remain simultaneously &#10;red" org.eventb.core.label="inv8" org.eventb.core.predicate="⊤"/>
+</org.eventb.core.machineFile>

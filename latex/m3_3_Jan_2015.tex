@@ -1,0 +1,132 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[top=3cm, bottom=2.5cm, left=3cm, right=2.5cm] {geometry}
+\usepackage {bsymb,b2latex}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,lastpage,color}
+\lhead{\rm An Event-B Specification of m3}
+\rhead {\rm Page \thepage~of \pageref{LastPage}}
+\lfoot{}\cfoot{}\rfoot{}
+\pagestyle{fancy}
+%---------------------------------------------------------
+\begin{document}
+\thispagestyle{empty}
+\begin{description}
+\BTitle{m3}{3Jan2015}{07:31:23 PM}
+\MACHINE{m3}\cmt{		\\\hspace*{1 cm}  BONUS QUESTION:		\\\hspace*{0.8 cm}  The controller needs a way to find out that the intersection		\\\hspace*{0.8 cm}  is empty. It could have loads of fancy hardware to sense the		\\\hspace*{0.8 cm}  cars but instead, we will use a timer. We assume that cars		\\\hspace*{0.8 cm}  move at least at a certain speed (for example half of the 		\\\hspace*{0.8 cm}  speed limit). Since we know that only three cars fit in the		\\\hspace*{0.8 cm}  intersection, we can wait long enough for three cars to 		\\\hspace*{0.8 cm}  leave the intersection after turning a light red and before		\\\hspace*{0.8 cm}  turning the other light green.		\\\hspace*{0.8 cm}  In terms of Event-B, the purpose is to make ctr$\_$* events not		\\\hspace*{0.8 cm}  use the EW and NS variables directly. Instead, the *$\_$green		\\\hspace*{0.8 cm}  events will rely on the value of the timer which has to be		\\\hspace*{0.8 cm}  related to the number of cars. Hint: EW $<$ = tmr might be a 		\\\hspace*{0.8 cm}  good start but it won't work just as is. }
+\REFINES{m2}
+\SEES{ctx0}
+\VARIABLES
+	\begin{description}
+		\Item{ EW }
+		\Item{ NS }
+		\ItemY{ c\_EW\_SGN }{color of the light signal for the cars coming from the east}
+		\ItemY{ c\_NS\_SGN }{... for the cars coming from the north}
+		\ItemY{ tmr }{timer: it is integer valued and will count down from 3 and 		\\\hspace*{1 cm}  may count passed 0.}
+	\end{description}
+\INVARIANTS
+	\begin{description}
+		\nItem{ inv1 }{ tmr \in  \intg   }
+		\nItemY{ inv2 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE (east-west) }
+		\nItemY{ inv3 }{ \btrue  }{ 		\\\hspace*{1.4 cm}  YOUR INVARIANT HERE (north-south) }
+	\end{description}
+\EVENTS
+	\INITIALISATION
+		\\\textit{extended}\cmt{		\\\hspace*{3.4 cm}  Initially, the intersection is empty }
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  0 }
+			\nItemX{ act2 }{ NS :=  0 }
+			\nItemX{ act3 }{ c\_EW\_SGN :=  RED }
+			\nItemX{ act4 }{ c\_NS\_SGN :=  GREEN }
+			\nItem{ act5 }{ tmr :=  0 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_NORTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {ENTER\_NORTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIST\_SOUTH}\cmt{		\\\hspace*{2.8 cm}  Environment phenomenon.		\\\hspace*{2.6 cm}  You may have to edit this }
+	\EXTD {EXIST\_SOUTH}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ NS :=  NS -  1 }
+			\nItem{ act2 }{ tmr :=  tmr -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ENTER\_EAST}\cmt{		\\\hspace*{2.6 cm}  Environment phenomenon.		\\\hspace*{2.4 cm}  You may have to edit this }
+	\EXTD {ENTER\_EAST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW + 1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {EXIT\_WEST}\cmt{		\\\hspace*{2.4 cm}  Environment phenomenon.		\\\hspace*{2.2 cm}  You may have to edit this }
+	\EXTD {EXIT\_WEST}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ EW :=  EW -  1 }
+			\nItem{ act2 }{ tmr :=  tmr -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ns\_green}\cmt{		\\\hspace*{2.2 cm}  Computer controlled		\\\hspace*{2 cm}  You may have to edit this }
+	\EXTD {ns\_green}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ c\_NS\_SGN :=  GREEN }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ns\_red}\cmt{		\\\hspace*{1.8 cm}  Computer controlled		\\\hspace*{1.6 cm}  You may have to edit this }
+	\EXTD {ns\_red}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ c\_NS\_SGN :=  RED }
+			\nItem{ act2 }{ tmr :=  3 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ew\_green}\cmt{		\\\hspace*{2.2 cm}  Computer controlled		\\\hspace*{2 cm}  You may have to edit this }
+	\EXTD {ew\_green}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ c\_EW\_SGN :=  GREEN }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {ew\_red}\cmt{		\\\hspace*{1.8 cm}  Computer controlled		\\\hspace*{1.6 cm}  You may have to edit this }
+	\EXTD {ew\_red}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItemX{ act1 }{ c\_EW\_SGN :=  RED }
+			\nItem{ act2 }{ tmr :=  3 }
+			\end{description}
+		\EndAct
+		\end{description}
+	\EVT {count\_down}
+		\begin{description}
+		\BeginAct
+			\begin{description}
+			\nItem{ act1 }{ tmr :=  tmr -  1 }
+			\end{description}
+		\EndAct
+		\end{description}
+\END
+\end{description}
+\end{document}

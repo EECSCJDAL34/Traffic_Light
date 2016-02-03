@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="5">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="COLOR" org.eventb.core.type="ℙ(COLOR)"/>
+<org.eventb.core.poIdentifier name="GREEN" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poIdentifier name="RED" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poPredicate name="GREEO" org.eventb.core.predicate="COLOR={GREEN,RED}" org.eventb.core.source="/TrafficLight_spec/ctx0.buc|org.eventb.core.contextFile#ctx0|org.eventb.core.axiom#*"/>
+<org.eventb.core.poPredicate name="GREEP" org.eventb.core.predicate="¬GREEN=RED" org.eventb.core.source="/TrafficLight_spec/ctx0.buc|org.eventb.core.contextFile#ctx0|org.eventb.core.axiom#+"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="EW" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="NS" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="c_EW_SGN" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poIdentifier name="c_NS_SGN" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poIdentifier name="tmr" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="c_NS_SGO" org.eventb.core.predicate="EW∈ℕ" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#*"/>
+<org.eventb.core.poPredicate name="c_NS_SGP" org.eventb.core.predicate="NS∈ℕ" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#+"/>
+<org.eventb.core.poPredicate name="c_NS_SGQ" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m0.bum|org.eventb.core.machineFile#m0|org.eventb.core.invariant#-"/>
+<org.eventb.core.poPredicate name="c_NS_SGR" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m1.bum|org.eventb.core.machineFile#m1|org.eventb.core.invariant#\/"/>
+<org.eventb.core.poPredicate name="c_NS_SGS" org.eventb.core.predicate="c_EW_SGN∈COLOR" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#2"/>
+<org.eventb.core.poPredicate name="c_NS_SGT" org.eventb.core.predicate="c_NS_SGN∈COLOR" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#3"/>
+<org.eventb.core.poPredicate name="c_NS_SGU" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#8"/>
+<org.eventb.core.poPredicate name="c_NS_SGV" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#9"/>
+<org.eventb.core.poPredicate name="c_NS_SGW" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#:"/>
+<org.eventb.core.poPredicate name="c_NS_SGX" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#="/>
+<org.eventb.core.poPredicate name="c_NS_SGY" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#&gt;"/>
+<org.eventb.core.poPredicate name="c_NS_SGZ" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m2.bum|org.eventb.core.machineFile#m2|org.eventb.core.invariant#@"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGO" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="EW'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="c_EW_SGN'" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poIdentifier name="c_NS_SGN'" org.eventb.core.type="COLOR"/>
+<org.eventb.core.poIdentifier name="NS'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGO" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGO" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGP" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="NS'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGP" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGP" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGQ" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="NS'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGQ" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGQ" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGR" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="EW'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGR" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGR" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGS" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="EW'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGS" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGS" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGT" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="c_NS_SGN'" org.eventb.core.type="COLOR"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGT" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGT" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGU" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="c_NS_SGN'" org.eventb.core.type="COLOR"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGU" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGU" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGV" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="c_EW_SGN'" org.eventb.core.type="COLOR"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGV" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGV" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGW" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="c_EW_SGN'" org.eventb.core.type="COLOR"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGW" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGW" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="EVTIDENTc_NS_SGX" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poIdentifier name="tmr'" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPc_NS_SGX" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#EVTIDENTc_NS_SGX" org.eventb.core.poStamp="5"/>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/TrafficLight_spec/m3.bpo|org.eventb.core.poFile#m3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="5">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tmr∈ℤ" org.eventb.core.source="/TrafficLight_spec/m3.bum|org.eventb.core.machineFile#m3|org.eventb.core.invariant#="/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m3.bum|org.eventb.core.machineFile#m3|org.eventb.core.invariant#&gt;"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="⊤" org.eventb.core.source="/TrafficLight_spec/m3.bum|org.eventb.core.machineFile#m3|org.eventb.core.invariant#A"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
